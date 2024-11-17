@@ -1,3 +1,7 @@
+
+![project](https://github.com/user-attachments/assets/fe8f2a38-35f7-41e7-b10b-1adb8a316e4d)
+
+
 Project Overview
 
 This is a browser-based quiz game where users load an Excel file containing questions and answers. Each question includes a text description, an image, and a correct city name. The game allows users to select a location on a map as their answer. The system verifies the selection against the correct answer and provides immediate feedback. This project combines map interactivity, file handling, and real-time feedback for an engaging learning experience.
