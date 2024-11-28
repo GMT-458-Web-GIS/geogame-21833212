@@ -45,17 +45,26 @@ document.getElementById('file-upload').addEventListener('change', async (e) => {
         const questionLimit = settings.questionCount || questions.length;
         questions = questions.slice(0, questionLimit);
         alert(`Questions Loaded and ${questions.length} Question Selected. You can start the game.`);
-        currentQuestionIndex = 0; // 
+        currentQuestionIndex = 0;
     } else {
         alert("Questions in Excel file could not be read.");
     }
 });
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 
 //GAME SETTINGS
 function startGame() {
+    resetGameState();
     document.getElementById('main-menu').classList.add('hidden');
     document.getElementById('game').classList.remove('hidden');
+    startTimer();
     showQuestion(0);
 }
 
@@ -70,7 +79,31 @@ Your score has been saved: ${score}`);
     showMainMenu();
 }
 
+function resetGameState() {
+    currentQuestionIndex = 0;
+    score = 0;
+    clearInterval(timer);
+    document.getElementById('score').textContent = `Puan: ${score}`;
+    const settings = JSON.parse(localStorage.getItem('settings')) || {};
+    const questionLimit = settings.questionCount || questions.length;
+    shuffleArray(questions);
+    questions = questions.slice(0, questionLimit);
+}
 
+function startTimer() {
+    const settings = JSON.parse(localStorage.getItem('settings'));
+    let timeLeft = settings?.timeLimit || 60;
+
+    document.getElementById('timer').textContent = `Süre: ${timeLeft}`;
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').textContent = `Süre: ${timeLeft}`;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            endGame();
+        }
+    }, 1000);
+}
 
 function showQuestion(index) {
     if (index < questions.length) {
