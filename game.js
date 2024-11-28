@@ -59,6 +59,19 @@ function startGame() {
     showQuestion(0);
 }
 
+function endGame() {
+    clearInterval(timer);
+    const playerName = prompt('Game Over! Enter your Name:');
+    const scores = JSON.parse(localStorage.getItem('topScores') || '[]');
+    scores.push({ name: playerName, score });
+    localStorage.setItem('topScores', JSON.stringify(scores));
+    alert(`
+Your score has been saved: ${score}`);
+    showMainMenu();
+}
+
+
+
 function showQuestion(index) {
     if (index < questions.length) {
         const question = questions[index];
@@ -69,3 +82,52 @@ function showQuestion(index) {
     }
 }
 
+
+async function checkAnswer(selectedCity) {
+    const correctCity = questions[currentQuestionIndex]['Doğru Cevap'];
+    const normalizedSelectedCity = normalizeText(selectedCity);
+    const normalizedCorrectCity = normalizeText(correctCity);
+
+    if (normalizedSelectedCity === normalizedCorrectCity) {
+        alert("Correct! You earned points.");
+        score++;
+    } else {
+        alert(`Wrong! Correct Answer: ${correctCity}`);
+    }
+
+    document.getElementById('score').textContent = `Point: ${score}`;
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+        showQuestion(currentQuestionIndex);
+    } else {
+        endGame();
+    }
+}
+
+
+// MAP SETTINGS
+const map = L.map('map').setView([39.92077, 32.85411], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+}).addTo(map);
+
+
+map.on('click', async (e) => {
+    const { lat, lng } = e.latlng;
+    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+    const data = await response.json();
+    const selectedCity = data.address?.province?.toUpperCase();
+
+    if (selectedCity) {
+        const normalizedCity = normalizeText(selectedCity);
+        const userConfirmed = confirm(`Selected city
+: ${selectedCity}. 
+Are you sure?`);
+        if (userConfirmed) {
+            checkAnswer(normalizedCity);
+        }
+    } else {
+        alert("City information could not be loaded. Please choose a different location.");
+    }
+});
