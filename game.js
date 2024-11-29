@@ -123,7 +123,7 @@ async function checkAnswer(selectedCity) {
 
     if (normalizedSelectedCity === normalizedCorrectCity) {
         alert("Correct! You earned points.");
-        score++;
+        score += 10;
     } else {
         alert(`Wrong! Correct Answer: ${correctCity}`);
     }
@@ -154,9 +154,7 @@ map.on('click', async (e) => {
 
     if (selectedCity) {
         const normalizedCity = normalizeText(selectedCity);
-        const userConfirmed = confirm(`Selected city
-: ${selectedCity}. 
-Are you sure?`);
+        const userConfirmed = confirm(`Selected city: ${selectedCity}. Are you sure?`);
         if (userConfirmed) {
             checkAnswer(normalizedCity);
         }
@@ -164,3 +162,29 @@ Are you sure?`);
         alert("City information could not be loaded. Please choose a different location.");
     }
 });
+
+function normalizeText(text) {
+    const charMap = {
+        'Ç': 'C', 'Ğ': 'G', 'İ': 'I', 'Ö': 'O', 'Ş': 'S', 'Ü': 'U',
+        'ç': 'c', 'ğ': 'g', 'ı': 'i', 'ö': 'o', 'ş': 's', 'ü': 'u',
+    };
+
+    return text
+        .toUpperCase()
+        .replace(/[ÇĞİÖŞÜçğıöşü]/g, char => charMap[char] || char);
+}
+
+function showTopScores() {
+    document.getElementById('main-menu').classList.add('hidden');
+    document.getElementById('top-scores').classList.remove('hidden');
+
+    const scoreList = document.getElementById('score-list');
+    scoreList.innerHTML = '';
+
+    const scores = JSON.parse(localStorage.getItem('topScores') || '[]');
+    scores.sort((a, b) => b.score - a.score).slice(0, 10).forEach((entry, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${index + 1}. ${entry.name} - ${entry.score}`;
+        scoreList.appendChild(li);
+    });
+}
