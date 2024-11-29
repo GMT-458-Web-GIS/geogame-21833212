@@ -197,6 +197,8 @@ function shuffleArray(array) {
 
 //GAME SETTINGS
 function startGame() {
+    const video = document.getElementById('background-video');
+    video.style.display = 'none';
     resetGameState();
     shuffleArray(questions);
     document.getElementById('main-menu').classList.add('hidden');
