@@ -1,4 +1,56 @@
-let questions = [];
+let questions = [
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pamukkale_30.jpg/1920px-Pamukkale_30.jpg",
+        "Doğru Cevap": "DENİZLİ"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://imgscdn.stargazete.com/imgsdisk/2022/09/30/kapadokyada-peri-bacalari-534_2-41.jpg",
+        "Doğru Cevap": "NEVŞEHİR"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://cdng.jollytur.com/files/packagephoto/packagephotos/4d402217-ab7f-4d2a-93ad-6f31d54c1325-1024.png",
+        "Doğru Cevap": "RİZE"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://www.hisglobal.com.tr/assets/images/uploads/1598444401.jpg",
+        "Doğru Cevap": "ADIYAMAN"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://www.gotatil.com/blog/wp-content/webp-express/webp-images/doc-root/blog/wp-content/uploads/2022/07/saklikent-kanyonu-768x783.jpg.webp",
+        "Doğru Cevap": "MUĞLA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://visitturkey.in/wp-content/uploads/2024/07/oludeniz-fethiye.webp",
+        "Doğru Cevap": "MUĞLA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/kaputas-plaji-36591.webp",
+        "Doğru Cevap": "ANTALYA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://www.kulturportali.gov.tr/contents/images/Yukar%c4%b1%20D%c3%bcden_Servet%20Uygun%20logolu.jpg",
+        "Doğru Cevap": "ANTALYA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://cevreonline.com/wp-content/uploads/2019/09/salda-golu.jpg",
+        "Doğru Cevap": "BURDUR"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/9/94/Air_Cennet_ve_Cehennem.png",
+        "Doğru Cevap": "MERSİN"
+    }
+
+];
 let currentQuestionIndex = 0;
 let score = 0;
 let timer;
@@ -41,14 +93,18 @@ document.getElementById('file-upload').addEventListener('change', async (e) => {
     questions = await excelToJson(file);
 
     if (questions.length > 0) {
+        shuffleArray(questions);
         const settings = JSON.parse(localStorage.getItem('settings')) || {};
         const questionLimit = settings.questionCount || questions.length;
         questions = questions.slice(0, questionLimit);
         alert(`Questions Loaded and ${questions.length} Question Selected. You can start the game.`);
         currentQuestionIndex = 0;
+        console.log(questions);
     } else {
         alert("Questions in Excel file could not be read.");
     }
+
+
 });
 
 function shuffleArray(array) {
@@ -62,6 +118,7 @@ function shuffleArray(array) {
 //GAME SETTINGS
 function startGame() {
     resetGameState();
+    shuffleArray(questions);
     document.getElementById('main-menu').classList.add('hidden');
     document.getElementById('game').classList.remove('hidden');
     startTimer();
