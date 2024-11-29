@@ -1,43 +1,18 @@
 let questions = [
     {
         "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pamukkale_30.jpg/1920px-Pamukkale_30.jpg",
-        "Doğru Cevap": "DENİZLİ"
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/9/94/Air_Cennet_ve_Cehennem.png",
+        "Doğru Cevap": "MERSİN"
     },
     {
-        "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://imgscdn.stargazete.com/imgsdisk/2022/09/30/kapadokyada-peri-bacalari-534_2-41.jpg",
-        "Doğru Cevap": "NEVŞEHİR"
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/tuzgolu1-34357.webp",
+        "Doğru Cevap": "KONYA"
     },
     {
-        "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://cdng.jollytur.com/files/packagephoto/packagephotos/4d402217-ab7f-4d2a-93ad-6f31d54c1325-1024.png",
-        "Doğru Cevap": "RİZE"
-    },
-    {
-        "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://www.hisglobal.com.tr/assets/images/uploads/1598444401.jpg",
-        "Doğru Cevap": "ADIYAMAN"
-    },
-    {
-        "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://www.gotatil.com/blog/wp-content/webp-express/webp-images/doc-root/blog/wp-content/uploads/2022/07/saklikent-kanyonu-768x783.jpg.webp",
-        "Doğru Cevap": "MUĞLA"
-    },
-    {
-        "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://visitturkey.in/wp-content/uploads/2024/07/oludeniz-fethiye.webp",
-        "Doğru Cevap": "MUĞLA"
-    },
-    {
-        "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/kaputas-plaji-36591.webp",
-        "Doğru Cevap": "ANTALYA"
-    },
-    {
-        "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://www.kulturportali.gov.tr/contents/images/Yukar%c4%b1%20D%c3%bcden_Servet%20Uygun%20logolu.jpg",
-        "Doğru Cevap": "ANTALYA"
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/yedigoller-38939.webp",
+        "Doğru Cevap": "BOLU"
     },
     {
         "Soru Metni": "In which city is the natural beauty in the photo?",
@@ -46,8 +21,113 @@ let questions = [
     },
     {
         "Soru Metni": "In which city is the natural beauty in the photo?",
-        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/9/94/Air_Cennet_ve_Cehennem.png",
-        "Doğru Cevap": "MERSİN"
+        "Görsel URL": "https://imgscdn.stargazete.com/imgsdisk/2022/09/30/kapadokyada-peri-bacalari-534_2-41.jpg",
+        "Doğru Cevap": "NEVŞEHİR"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/kaputas-plaji-36591.webp",
+        "Doğru Cevap": "ANTALYA"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/balikligol-16360.webp",
+        "Doğru Cevap": "ŞANLIURFA"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/uludag-25487.webp",
+        "Doğru Cevap": "BURSA"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "https://www.kulturportali.gov.tr/contents/images/THK-ORHAN%20%c3%96ZG%c3%9cLBA%c5%9e-D%c4%b0YARBAKIR.jpg?format=jpg&quality=50&width=1200",
+        "Doğru Cevap": "DİYARBAKIR"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pamukkale_30.jpg/1920px-Pamukkale_30.jpg",
+        "Doğru Cevap": "DENİZLİ"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://www.kulturportali.gov.tr/contents/images/Yukar%c4%b1%20D%c3%bcden_Servet%20Uygun%20logolu.jpg",
+        "Doğru Cevap": "ANTALYA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/EG%C4%B0RD%C4%B0R_G%C3%96L%C3%9C.jpg/1280px-EG%C4%B0RD%C4%B0R_G%C3%96L%C3%9C.jpg",
+        "Doğru Cevap": "ISPARTA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/9/90/Damlata%C5%9F_Cave.jpg",
+        "Doğru Cevap": "ANTALYA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://visitturkey.in/wp-content/uploads/2024/07/oludeniz-fethiye.webp",
+        "Doğru Cevap": "MUĞLA"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/trabzon-uzungol-24769.webp",
+        "Doğru Cevap": "TRABZON"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/igneada-34157.webp",
+        "Doğru Cevap": "KIRKLARELİ"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "https://www.arkeogezgin.com/wp-content/uploads/2017/11/IMG_0706.jpg",
+        "Doğru Cevap": "DENİZLİ"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "https://www.kapadokyadayim.com/wp-content/uploads/2017/03/ihlara-vadisi.jpg",
+        "Doğru Cevap": "AKSARAY"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/G%C3%B6bekli_Tepe%2C_Urfa.jpg/1280px-G%C3%B6bekli_Tepe%2C_Urfa.jpg",
+        "Doğru Cevap": "ŞANLIURFA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/%C3%87%C4%B1ld%C4%B1r_G%C3%B6l%C3%BCnde_Atl%C4%B1_K%C4%B1zak.jpg/1280px-%C3%87%C4%B1ld%C4%B1r_G%C3%B6l%C3%BCnde_Atl%C4%B1_K%C4%B1zak.jpg",
+        "Doğru Cevap": "KARS"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://www.gotatil.com/blog/wp-content/webp-express/webp-images/doc-root/blog/wp-content/uploads/2022/07/saklikent-kanyonu-768x783.jpg.webp",
+        "Doğru Cevap": "MUĞLA"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://www.hisglobal.com.tr/assets/images/uploads/1598444401.jpg",
+        "Doğru Cevap": "ADIYAMAN"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/agri-dagi-35771.webp",
+        "Doğru Cevap": "AĞRI"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/akdamar-adasi-na-nasil-gidilir-52107.webp",
+        "Doğru Cevap": "VAN"
+    },
+    {
+        "Soru Metni": "which city does this photo belong to?",
+        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/erciyes-dagi-813.webp",
+        "Doğru Cevap": "KAYSERİ"
+    },
+    {
+        "Soru Metni": "In which city is the natural beauty in the photo?",
+        "Görsel URL": "https://cdng.jollytur.com/files/packagephoto/packagephotos/4d402217-ab7f-4d2a-93ad-6f31d54c1325-1024.png",
+        "Doğru Cevap": "RİZE"
     }
 
 ];
