@@ -134,6 +134,35 @@ let questions = [
 let currentQuestionIndex = 0;
 let score = 0;
 let timer;
+// MAP SETTINGS
+
+
+const map = L.map('map').setView([39.92077, 32.85411], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 10,
+}).addTo(map);
+
+// Haritayı yükledikten sonra sayfanın zoom oranını değiştirip geri yükle
+
+
+
+map.on('click', async (e) => {
+    const { lat, lng } = e.latlng;
+    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
+    const data = await response.json();
+    const selectedCity = data.address?.province?.toUpperCase();
+
+    if (selectedCity) {
+        const normalizedCity = normalizeText(selectedCity);
+        const userConfirmed = confirm(`Selected city: ${selectedCity}. Are you sure?`);
+        if (userConfirmed) {
+            checkAnswer(normalizedCity);
+        }
+    } else {
+        alert("City information could not be loaded. Please choose a different location.");
+    }
+});
+
 
 function showMainMenu() {
     document.getElementById('main-menu').classList.remove('hidden');
@@ -197,6 +226,18 @@ function shuffleArray(array) {
 
 //GAME SETTINGS
 function startGame() {
+    setTimeout(() => {
+        document.body.style.transition = "transform 0.3s ease";
+        document.body.style.transform = "scale(0.99)";
+
+        setTimeout(() => {
+            document.body.style.transform = "scale(1)";
+            setTimeout(() => {
+                document.body.style.transition = "";
+                map.invalidateSize();
+            }, 300);
+        }, 300);
+    }, 500);
     const video = document.getElementById('background-video');
     video.style.display = 'none';
     resetGameState();
@@ -278,29 +319,6 @@ async function checkAnswer(selectedCity) {
 }
 
 
-// MAP SETTINGS
-const map = L.map('map').setView([39.92077, 32.85411], 6);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-}).addTo(map);
-
-
-map.on('click', async (e) => {
-    const { lat, lng } = e.latlng;
-    const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`);
-    const data = await response.json();
-    const selectedCity = data.address?.province?.toUpperCase();
-
-    if (selectedCity) {
-        const normalizedCity = normalizeText(selectedCity);
-        const userConfirmed = confirm(`Selected city: ${selectedCity}. Are you sure?`);
-        if (userConfirmed) {
-            checkAnswer(normalizedCity);
-        }
-    } else {
-        alert("City information could not be loaded. Please choose a different location.");
-    }
-});
 
 function normalizeText(text) {
     const charMap = {
