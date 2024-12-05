@@ -71,11 +71,6 @@ let questions = [
     },
     {
         "Soru Metni": "which city does this photo belong to?",
-        "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/trabzon-uzungol-24769.webp",
-        "Doğru Cevap": "TRABZON"
-    },
-    {
-        "Soru Metni": "which city does this photo belong to?",
         "Görsel URL": "http://assets.enuygun.com/media/lib/825x620/uploads/image/igneada-34157.webp",
         "Doğru Cevap": "KIRKLARELİ"
     },
@@ -142,7 +137,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 10,
 }).addTo(map);
 
-// Haritayı yükledikten sonra sayfanın zoom oranını değiştirip geri yükle
 
 
 
